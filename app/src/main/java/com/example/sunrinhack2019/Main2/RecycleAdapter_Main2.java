@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
@@ -16,7 +18,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.sunrinhack2019.Auth.UserDB;
+import com.example.sunrinhack2019.Dialog_DeleteArticle;
+import com.example.sunrinhack2019.Dialog_NewPassword;
 import com.example.sunrinhack2019.KeyModel;
+import com.example.sunrinhack2019.MainActivity;
 import com.example.sunrinhack2019.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -63,7 +68,7 @@ public class RecycleAdapter_Main2 extends RecyclerView.Adapter<RecycleHolder_Mai
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecycleHolder_Main2 holder, int position) {
+    public void onBindViewHolder(@NonNull final RecycleHolder_Main2 holder, final int position) {
 
         final KeyModel item = items.get(position); //리스트의 position 위치 값을 com.example.builders.Main.ArticleModel 양식으로 가져오기
 
@@ -87,8 +92,8 @@ public class RecycleAdapter_Main2 extends RecyclerView.Adapter<RecycleHolder_Mai
                 if(holder.moreBtn.getTag().equals("n")){
                     holder.moreBtn.setImageResource(R.drawable.item_less);
                     holder.keybox.setVisibility(View.VISIBLE);
-                    holder.editTitle.setVisibility(View.VISIBLE);
-                    holder.cameraBtn.setVisibility(View.VISIBLE);
+                    //holder.editTitle.setVisibility(View.VISIBLE);
+                    //holder.cameraBtn.setVisibility(View.VISIBLE);
                     holder.removeBtn.setVisibility(View.VISIBLE);
                     holder.moreBtn.setTag("y");
                 }
@@ -103,6 +108,51 @@ public class RecycleAdapter_Main2 extends RecyclerView.Adapter<RecycleHolder_Mai
             }
         });
 
+        holder.all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.moreBtn.getTag().equals("n")){
+                    holder.moreBtn.setImageResource(R.drawable.item_less);
+                    holder.keybox.setVisibility(View.VISIBLE);
+                    //holder.editTitle.setVisibility(View.VISIBLE);
+                    //holder.cameraBtn.setVisibility(View.VISIBLE);
+                    holder.removeBtn.setVisibility(View.VISIBLE);
+                    holder.moreBtn.setTag("y");
+                }
+                else{
+                    holder.moreBtn.setImageResource(R.drawable.item_more);
+                    holder.keybox.setVisibility(View.GONE);
+                    holder.editTitle.setVisibility(View.GONE);
+                    holder.cameraBtn.setVisibility(View.GONE);
+                    holder.removeBtn.setVisibility(View.GONE);
+                    holder.moreBtn.setTag("n");
+                }
+            }
+        });
+
+        holder.removeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.remove(position);
+                notifyDataSetChanged();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                Query query = ref.child("keys").orderByChild("kid").equalTo(item.getKid());
+
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            snapshot.getRef().removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 //        holder.getVisibleButton().setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

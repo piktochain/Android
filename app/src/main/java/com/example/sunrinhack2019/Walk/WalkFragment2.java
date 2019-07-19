@@ -31,18 +31,18 @@ public class WalkFragment2 extends AppIntroBaseFragment implements ISlideBackgro
         return 0;
     }
 
-    @Override
-    public int getDefaultBackgroundColor() {
-        // Return the default background color of the slide.
-        return Color.parseColor("#fea771");
-    }
-
-    @Override
-    public void setBackgroundColor(@ColorInt int backgroundColor) {
-        // Set the background color of the view within your slide to which the transition should be applied.
-        walk2 = getView().findViewById(R.id.walk2);
-        if (walk2 != null) {
-            walk2.setBackgroundColor(backgroundColor);
-        }
-    }
+//    @Override
+//    public int getDefaultBackgroundColor() {
+//        // Return the default background color of the slide.
+//        return Color.parseColor("#fea771");
+//    }
+//
+//    @Override
+//    public void setBackgroundColor(@ColorInt int backgroundColor) {
+//        // Set the background color of the view within your slide to which the transition should be applied.
+//        walk2 = getView().findViewById(R.id.walk2);
+//        if (walk2 != null) {
+//            walk2.setBackgroundColor(backgroundColor);
+//        }
+//    }
 }

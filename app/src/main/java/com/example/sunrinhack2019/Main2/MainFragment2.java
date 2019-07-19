@@ -98,23 +98,23 @@ public class MainFragment2 extends android.support.v4.app.Fragment {
         });
 
 
-        RecycleClick_Main2.addRecycler(rcv).setOnItemClickListener(new RecycleClick_Main2.OnItemClickListener() { //RecyclerViewd에 onClickListener 추가
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-
-                //Toast.makeText(ChatActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), ArticleActivity.class); //프로필 화면으로 Intent 선언
-
-                //Intent에 RecyclerView의 클릭된 위치 아이템에서 가져온 메세지 유저 정보 첨부
-                intent.putExtra("title", rcvAdap.getItems().get(position).getTitle());
-                intent.putExtra("info", rcvAdap.getItems().get(position).getInfo());
-                intent.putExtra("password", rcvAdap.getItems().get(position).getPassword());
-                intent.putExtra("image", rcvAdap.getItems().get(position).getImg());
-                intent.putExtra("kid", rcvAdap.getItems().get(position).getKid());
-
-                startActivity(intent); //프로필 화면 Activity 실행
-            }
-        });
+//        RecycleClick_Main2.addRecycler(rcv).setOnItemClickListener(new RecycleClick_Main2.OnItemClickListener() { //RecyclerViewd에 onClickListener 추가
+//            @Override
+//            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//
+//                //Toast.makeText(ChatActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getContext(), ArticleActivity.class); //프로필 화면으로 Intent 선언
+//
+//                //Intent에 RecyclerView의 클릭된 위치 아이템에서 가져온 메세지 유저 정보 첨부
+//                intent.putExtra("title", rcvAdap.getItems().get(position).getTitle());
+//                intent.putExtra("info", rcvAdap.getItems().get(position).getInfo());
+//                intent.putExtra("password", rcvAdap.getItems().get(position).getPassword());
+//                intent.putExtra("image", rcvAdap.getItems().get(position).getImg());
+//                intent.putExtra("kid", rcvAdap.getItems().get(position).getKid());
+//
+//                startActivity(intent); //프로필 화면 Activity 실행
+//            }
+//        });
 
         return v;
 

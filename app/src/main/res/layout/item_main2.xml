@@ -13,7 +13,8 @@
     android:paddingStart="24dp"
     android:paddingTop="24dp"
     android:paddingEnd="24dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    android:id="@+id/item_main2_all">
 
 
     <LinearLayout
@@ -87,6 +88,9 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="2dp"
                     android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:src="@drawable/remove_icon" />
             </RelativeLayout>
 

@@ -20,7 +20,7 @@ public class RecycleHolder_Main2 extends RecyclerView.ViewHolder {
     public CircleImageView img;//, visibleBtn;
     public ImageView moreBtn, editTitle, cameraBtn, removeBtn;
 
-    public LinearLayout keybox;
+    public LinearLayout keybox, all;
 
     //ViewHolder
     public RecycleHolder_Main2(View itemView) {
@@ -35,6 +35,7 @@ public class RecycleHolder_Main2 extends RecyclerView.ViewHolder {
         editTitle = itemView.findViewById(R.id.item_main2_edit_title);
         cameraBtn = itemView.findViewById(R.id.item_main2_cameraBtn);
         removeBtn = itemView.findViewById(R.id.item_main2_removeBtn);
+        all = itemView.findViewById(R.id.item_main2_all);
     }
 
 //    public ImageView getVisibleButton() {

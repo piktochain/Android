@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.sunrinhack2019.Main1.MainFragment1;
 import com.example.sunrinhack2019.Main2.MainFragment2;
@@ -30,6 +31,34 @@ public class MainActivity extends AppCompatActivity {
 
     public LocationManager locationManager;
     public static final int REQUEST_CODE_LOCATION = 2;
+
+    String[] location;
+
+    private Location getLastKnownLocation() {
+        List<String> providers = locationManager.getProviders(false);
+        Location bestLocation = null;
+        // Register the listener with the Location Manager to receive location updates
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            System.out.println("////////////사용자에게 권한을 요청해야함");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION);
+            getLastKnownLocation(); //이건 써도되고 안써도 되지만, 전 권한 승인하면 즉시 위치값 받아오려고 썼습니다!
+        }
+        else {
+            System.out.println("////////////권한요청 안해도됨");
+            for (String provider : providers) {
+                Location l = locationManager.getLastKnownLocation(provider);
+                if (l == null) {
+                    continue;
+                }
+                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                    // Found best last known location: %s", l);
+                    bestLocation = l;
+                }
+            }
+        }
+
+        return bestLocation;
+    }
 
     //이거쓰면 권한이랑 위치구하기까지 싹해결
     private Location getMyLocation() {
@@ -44,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("////////////권한요청 안해도됨");
 
             // 수동으로 위치 구하기
-            String locationProvider = LocationManager.GPS_PROVIDER;
+            String locationProvider = LocationManager.NETWORK_PROVIDER;
+            Log.e("test", "getMyLocation: "+locationProvider);
             currentLocation = locationManager.getLastKnownLocation(locationProvider);
+            Log.e("test", "getCurrentLocation: "+currentLocation);
             if (currentLocation != null) {
                 double lng = currentLocation.getLongitude();
                 double lat = currentLocation.getLatitude();
@@ -78,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
 
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         //사용자의 현재 위치
-        Location userLocation = getMyLocation();
+        Location userLocation = getLastKnownLocation();
+
+
+        //Log.d("test", "onCreate: "+userLocation);
         if( userLocation != null ) {
             double latitude = userLocation.getLatitude();
             double longitude = userLocation.getLongitude();
@@ -105,6 +139,14 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // list.get(0).toString() 이게 주소 써진거임 Log로 어떻게 출력되는진 확인
                     Log.e("test", list.get(0).toString());
+                    //Toast.makeText(this, list.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
+                    location = list.get(0).getAddressLine(0).split(" ");
+                    String result="";
+                    for(int i=1;i<=location.length;i++){
+                        if((i+1)==location.length) result=result.concat(location[i-1]);
+                        else if(i==location.length) result=result.concat(location[i-1]);
+                    }
+                    //Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
                 }
             }
             //여기까지 변환하는 코드

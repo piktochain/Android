@@ -1,6 +1,7 @@
 package com.example.sunrinhack2019.Walk;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -55,8 +56,12 @@ public class WalkthroughActivity extends AppIntro {
 
         setImageNextButton(getResources().getDrawable(R.drawable.ic_navigate_next_white_24dp));
         setSkipText("건너뛰기");
+        setColorSkipButton(Color.BLACK);
+        setColorDoneText(Color.BLACK);
+        setIndicatorColor(Color.BLACK, Color.BLACK);
+
         setDoneText("시작하기");
-        setColorTransitionsEnabled(true);
+        //setColorTransitionsEnabled(true);
 
         // Turn vibration on and set intensity.
         // NOTE: you will probably need to ask VIBRATE permission in Manifest.

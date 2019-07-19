@@ -27,7 +27,7 @@ public class MainFragment3 extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    Button logoutBtn, helpBtn, changeBtn, deleteBtn;
+    Button logoutBtn, helpBtn, changeBtn;
 
     Context context;
     TextView name;
@@ -68,15 +68,6 @@ public class MainFragment3 extends android.support.v4.app.Fragment {
             public void onClick(View view) {
                 DialogFragment dialogFragment = new Dialog_NewPassword();
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "dialog_newpassword");
-            }
-        });
-
-        deleteBtn = v.findViewById(R.id.main_delete);
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment dialogFragment = new Dialog_DeleteUser();
-                dialogFragment.show(getActivity().getSupportFragmentManager(), "dialog_deleteuser");
             }
         });
 

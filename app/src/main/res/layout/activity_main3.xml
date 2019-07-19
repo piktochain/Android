@@ -102,16 +102,25 @@
             android:gravity="center"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="48dp"
             android:background="@drawable/login_textbox"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="설정"
+                android:fontFamily="@font/nanumsquareeb"
+                android:layout_marginBottom="48dp"
+                android:textSize="28sp"
+                android:textColor="@color/colorPrimary"/>
 
             <Button
                 android:id="@+id/main_help"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="24dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/login_gradient"
@@ -124,7 +133,7 @@
                 android:id="@+id/main_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="24dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/login_gradient"
@@ -137,28 +146,14 @@
                 android:id="@+id/main_changepw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginEnd="48dp"
                 android:background="@drawable/login_gradient"
                 android:fontFamily="@font/nanumsquarer"
                 android:text="비밀번호 재설정"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/main_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginEnd="48dp"
-                android:background="@drawable/login_gradient"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="회원 탈퇴"
-                android:textColor="@android:color/white"
-                android:textSize="18sp" />
-
-
+                android:textSize="18sp"
+                android:layout_marginBottom="24dp"/>
 
         </LinearLayout>
 
