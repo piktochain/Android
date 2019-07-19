@@ -1,19 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="@drawable/main_background"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="main3"/>
+        android:gravity="center_vertical"
+        android:padding="12dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="logout"
-        android:id="@+id/main_logout"/>
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/app_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="픽토체인"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/user_profile" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/main2_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareeb"
+                android:text="김서연"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquarer"
+                android:text=" 님의 "
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareeb"
+                android:text="KEY"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/login_textbox"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/locate_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="선린인터넷고등학교" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/login_textbox"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/login_gradient"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="도움말"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/main_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/login_gradient"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="로그아웃"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/main_changepw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/login_gradient"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="비밀번호 재설정"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/main_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/login_gradient"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="회원 탈퇴"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

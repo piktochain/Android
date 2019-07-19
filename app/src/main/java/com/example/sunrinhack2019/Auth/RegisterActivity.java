@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     //회원가입 기능을 수행하는 Activity
 
     //EditText, ProgressBar, Button 선언
-    EditText id, password, passwordcheck, nickname;
+    EditText id, name, password, passwordcheck;
     ProgressBar regiProgress;
     Button regiBtn;
 
@@ -49,9 +50,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         //EditText findViewById
         id = findViewById(R.id.reg_id);
-        nickname = findViewById(R.id.reg_nickname);
+        //nickname = findViewById(R.id.reg_nickname);
+        name = findViewById(R.id.reg_name);
         password = findViewById(R.id.reg_password);
+        password.setTransformationMethod(new AsteriskPasswordTransformationMethod());
         passwordcheck = findViewById(R.id.reg_passwordcheck);
+        passwordcheck.setTransformationMethod(new AsteriskPasswordTransformationMethod());
 
         firebaseAuth = FirebaseAuth.getInstance();// FireBase 현재 Auth 정보 가져오기
 
@@ -60,7 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //회원가입 버튼이 클릭되었을 때
 
-                if (!id.getText().toString().equals("") && !password.getText().toString().equals("")
+                if (!id.getText().toString().equals("") && !name.getText().toString().equals("") &&
+                        !password.getText().toString().equals("")
                         && !passwordcheck.getText().toString().equals("")) { //모든 항목이 기입되었을 경우
                     createAccount(id.getText().toString(), password.getText().toString(), passwordcheck.getText().toString()); //기입한 정보로 회원가입 진행
                 }
@@ -85,25 +90,25 @@ public class RegisterActivity extends AppCompatActivity {
     private void createAccount(final String email, final String password, final String passwordcheck) { //회원가입 함수
 
         //ProgressBar findViewById
-        regiProgress = findViewById(R.id.progress_regi);
-
-        regiProgress.setVisibility(View.VISIBLE); //ProgressBar 표시
+//        regiProgress = findViewById(R.id.progress_regi);
+//
+//        regiProgress.setVisibility(View.VISIBLE); //ProgressBar 표시
 
         if (!isValidEmail(email)) { //이메일 유효성 검사에 실패할 경우
             Toast.makeText(getApplicationContext(), "이메일이 유효하지 않습니다", Toast.LENGTH_SHORT).show(); //이메일 유효성검사 실패 토스트
-            regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
+            //regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
             return;
         }
 
         if (!isValidPasswd(password)) { //패스워드 유효성 검사에 실패할 경우
             Toast.makeText(getApplicationContext(), "패스워드가 유효하지 않습니다", Toast.LENGTH_SHORT).show(); //패스워드 유효성 검사 실패 토스트
-            regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
+            //regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
             return;
         }
 
         if (!password.equals(passwordcheck)) { //패스워드와 패스워드 재입력이 일치하지 않는 경우
             Toast.makeText(getApplicationContext(), "패스워드가 일치하지 않습니다", Toast.LENGTH_SHORT).show(); //재입력 불일치 토스트
-            regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
+            //regiProgress.setVisibility(View.INVISIBLE); //ProgressBar 숨기기
             return;
         }
 
@@ -113,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { //회원가입에 성공했다면
                             FirebaseUser user = firebaseAuth.getCurrentUser(); //현재 유저 정보 가져오기
-                            UserModel model = new UserModel(nickname.getText().toString(), email, user.getUid()); //UserModel 양식에 회원가입 정보 추가
+                            UserModel model = new UserModel(name.getText().toString(), email, user.getUid()); //UserModel 양식에 회원가입 정보 추가
                             databaseReference.child("user").push().setValue(model); //작성한 model 양식을 Firebase DB에 등록
                             Toast.makeText(getApplicationContext(), "환영합니다, " + id.getText().toString() + "!", Toast.LENGTH_SHORT).show(); //회원가입 성공 토스트
                             finish();
@@ -126,6 +131,29 @@ public class RegisterActivity extends AppCompatActivity {
                 });
 
 
+    }
+
+    public static class AsteriskPasswordTransformationMethod extends PasswordTransformationMethod {
+        @Override
+        public CharSequence getTransformation(CharSequence source, View view) {
+            return new LoginActivity.AsteriskPasswordTransformationMethod.PasswordCharSequence(source);
+        }
+
+        static class PasswordCharSequence implements CharSequence {
+            private CharSequence mSource;
+            public PasswordCharSequence(CharSequence source) {
+                mSource = source;
+            }
+            public char charAt(int index) {
+                return '*';
+            }
+            public int length() {
+                return mSource.length();
+            }
+            public CharSequence subSequence(int start, int end) {
+                return mSource.subSequence(start, end);
+            }
+        }
     }
 
 }

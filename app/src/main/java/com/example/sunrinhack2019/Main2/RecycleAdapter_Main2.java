@@ -70,7 +70,8 @@ public class RecycleAdapter_Main2 extends RecyclerView.Adapter<RecycleHolder_Mai
         //가져온 값을 holder에 대입
         holder.title.setText(item.getTitle());
         //holder.password.setText("****");
-        //holder.password.setText(item.getPassword());
+        holder.password.setText(item.getPassword());
+        holder.date.setText(item.getDate());
 
         String data = item.getImg();
         byte[] bytePlainOrg = Base64.decode(data, Base64.NO_WRAP);
@@ -79,6 +80,28 @@ public class RecycleAdapter_Main2 extends RecyclerView.Adapter<RecycleHolder_Mai
         Bitmap bm = BitmapFactory.decodeStream(inStream) ;
 
         holder.img.setImageBitmap(bm);
+
+        holder.moreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.moreBtn.getTag().equals("n")){
+                    holder.moreBtn.setImageResource(R.drawable.item_less);
+                    holder.keybox.setVisibility(View.VISIBLE);
+                    holder.editTitle.setVisibility(View.VISIBLE);
+                    holder.cameraBtn.setVisibility(View.VISIBLE);
+                    holder.removeBtn.setVisibility(View.VISIBLE);
+                    holder.moreBtn.setTag("y");
+                }
+                else{
+                    holder.moreBtn.setImageResource(R.drawable.item_more);
+                    holder.keybox.setVisibility(View.GONE);
+                    holder.editTitle.setVisibility(View.GONE);
+                    holder.cameraBtn.setVisibility(View.GONE);
+                    holder.removeBtn.setVisibility(View.GONE);
+                    holder.moreBtn.setTag("n");
+                }
+            }
+        });
 
 //        holder.getVisibleButton().setOnClickListener(new View.OnClickListener() {
 //            @Override

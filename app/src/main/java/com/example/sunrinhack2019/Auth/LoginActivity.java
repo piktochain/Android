@@ -47,6 +47,9 @@ public class LoginActivity extends Activity {
 
         firebaseAuth = FirebaseAuth.getInstance(); //Firebase 현재 Auth 정보 가져오기
 
+        password = findViewById(R.id.login_password);
+        password.setTransformationMethod(new AsteriskPasswordTransformationMethod());
+
         //자동 로그인 구현
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -77,8 +80,6 @@ public class LoginActivity extends Activity {
 
                 //EditText findViewById
                 id = findViewById(R.id.login_id);
-                password = findViewById(R.id.login_password);
-                password.setTransformationMethod(new AsteriskPasswordTransformationMethod());
                 if(!id.getText().toString().equals("") && !password.getText().toString().equals("")){ //만약 비워진 항목이 없다면
                     login(id.getText().toString(), password.getText().toString()); //입력한 ID와 PW로 로그인 요청
                 }

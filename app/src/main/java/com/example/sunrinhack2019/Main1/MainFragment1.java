@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -24,8 +25,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sunrinhack2019.Auth.UserDB;
 import com.example.sunrinhack2019.GetTimeDate;
 import com.example.sunrinhack2019.KeyModel;
 import com.example.sunrinhack2019.R;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.aflak.libraries.callback.FingerprintDialogCallback;
 import me.aflak.libraries.dialog.FingerprintDialog;
 
@@ -56,8 +60,12 @@ public class MainFragment1 extends android.support.v4.app.Fragment {
 
     Context context;
 
-    ImageView imageView;
-    Button cameraBtn, fingerBtn;
+    TextView name, title, password;
+
+    ImageView cameraBtn;
+    CircleImageView image;
+
+    Button uploadBtn;
 
     private String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}; //권한 설정 변수
     private static final int MULTIPLE_PERMISSIONS = 101; //권한 동의 여부 문의 후 CallBack 함수에 쓰일 변수
@@ -68,23 +76,73 @@ public class MainFragment1 extends android.support.v4.app.Fragment {
 
     Uri photoUri;
 
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseAuth firebaseAuth;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
         final View v =  inflater.inflate(R.layout.activity_main1, container, false);
 
         context = container.getContext();
-        //imageView = v.findViewById(R.id.main_image);
+        image = v.findViewById(R.id.main1_image);
+        title = v.findViewById(R.id.main1_title);
+        password = v.findViewById(R.id.main1_password);
 
-//        cameraBtn = v.findViewById(R.id.cameraBtn);
-//        cameraBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                checkPermissions();
-//                takePhoto();
-//            }
-//        });
+        cameraBtn = v.findViewById(R.id.cameraBtn);
+        cameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkPermissions();
+                takePhoto();
+            }
+        });
 
+        UserDB userDB = new UserDB();
+        name = v.findViewById(R.id.main2_username);
+        name.setText(userDB.getUserNickname(context));
+
+
+        uploadBtn = v.findViewById(R.id.uploadBtn);
+        uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GetTimeDate getTimeDate = new GetTimeDate();
+                firebaseAuth = FirebaseAuth.getInstance();
+
+                final String articleKey = firebaseAuth.getUid()+getTimeDate.getDate()+getTimeDate.getTime()+getTimeDate.getSec();
+
+                KeyModel model = new KeyModel();
+                model.setTitle(title.getText().toString());
+                model.setPassword(password.getText().toString());
+
+                Bitmap img = ((BitmapDrawable) image.getDrawable()).getBitmap();
+                ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+
+                img.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+                byte[] imageOut = outStream.toByteArray();
+                String profileImageBase64 = Base64.encodeToString(imageOut, Base64.NO_WRAP);
+
+                model.setImg(profileImageBase64);
+                model.setDate(getTimeDate.getDate());
+                model.setTime(getTimeDate.getTime());
+                model.setUid(firebaseAuth.getUid());
+                model.setCount(0);
+                model.setKid(articleKey);
+                databaseReference.child("keys").push().setValue(model);
+
+                title.setText("");
+                password.setText("");
+                image.setImageResource(R.drawable.default_image);
+                Toast.makeText(context, "성공적으로 추가했습니다!", Toast.LENGTH_SHORT).show();
+
+
+
+            }
+        });
         return v;
     }
 
@@ -101,15 +159,17 @@ public class MainFragment1 extends android.support.v4.app.Fragment {
             bitmap =  Bitmap.createBitmap(bitmap, 0, 0,
                     bitmap.getWidth(), bitmap.getHeight(), rotateMatrix, false);
 
-            Bitmap thumbImage = ThumbnailUtils.extractThumbnail(bitmap, 540, 960);
+            Bitmap thumbImage = ThumbnailUtils.extractThumbnail(bitmap, 480, 480);
             ByteArrayOutputStream bs = new ByteArrayOutputStream();
             thumbImage.compress(Bitmap.CompressFormat.JPEG, 10, bs); //이미지가 클 경우 OutOfMemoryException 발생이 예상되어 압축
 
+            image.setImageBitmap(thumbImage);
+
             byte[] image = bs.toByteArray();
             String profileImageBase64 = Base64.encodeToString(image, Base64.NO_WRAP);
-            Intent intent = new Intent(context, UploadActivity.class);
-            intent.putExtra("image", profileImageBase64);
-            startActivity(intent);
+//            Intent intent = new Intent(context, UploadActivity.class);
+//            intent.putExtra("image", profileImageBase64);
+//            startActivity(intent);
 //
 
             //imageView.setImageBitmap(thumbImage);

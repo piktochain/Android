@@ -4,12 +4,12 @@
 
     <item android:id="@+id/action_1"
         android:title="추가"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/action1" />
     <item android:id="@+id/action_2"
         android:title="홈"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/action2" />
     <item android:id="@+id/action_3"
         android:title="설정"
-        android:icon="@drawable/ic_android_black_24dp" />
+        android:icon="@drawable/action3" />
 
 </menu>

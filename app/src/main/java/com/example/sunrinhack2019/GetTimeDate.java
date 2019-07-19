@@ -27,7 +27,7 @@ public class GetTimeDate {
     public String getDate(){ //현재 날짜를 반환하는 함수
         Date date = new Date();
         //현재 날짜를 (년/월/일) 형식으로 가져옴
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         String dateNow = simpleDateFormat.format(date);
         return dateNow; //현재 날짜 반환
     }

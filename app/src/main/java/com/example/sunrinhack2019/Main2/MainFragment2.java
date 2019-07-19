@@ -1,5 +1,6 @@
 package com.example.sunrinhack2019.Main2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,7 +13,9 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.sunrinhack2019.Auth.UserDB;
 import com.example.sunrinhack2019.GetTimeDate;
 import com.example.sunrinhack2019.KeyModel;
 import com.example.sunrinhack2019.R;
@@ -39,10 +42,20 @@ public class MainFragment2 extends android.support.v4.app.Fragment {
     RecyclerView rcv;
     RecycleAdapter_Main2 rcvAdap;
 
+    TextView name;
+
+    Context context;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
         final View v =  inflater.inflate(R.layout.activity_main2, container, false);
+
+        context = container.getContext();
+
+        UserDB userDB = new UserDB();
+        name = v.findViewById(R.id.main2_username);
+        name.setText(userDB.getUserNickname(context));
 
         rcv = v.findViewById(R.id.main2_recycler);
         LinearLayoutManager lm = new LinearLayoutManager(getActivity(),
@@ -54,27 +67,7 @@ public class MainFragment2 extends android.support.v4.app.Fragment {
 
         rcv.setAdapter(rcvAdap);
 
-//        KeyModel model = new KeyModel();
-//        model.setTitle("타이틀");
-//        model.setInfo("내용");
-//        model.setPassword("test1234");
-//
-//        Bitmap image = ((BitmapDrawable)getResources().getDrawable(R.drawable.profile1)).getBitmap();
-//        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-//        image.compress(Bitmap.CompressFormat.PNG, 100, outStream);
-//        byte[] img = outStream.toByteArray();
-//        String imageBase64 = Base64.encodeToString(img, 0);
-//        model.setImg(imageBase64);
-//
-//        GetTimeDate getTimeDate = new GetTimeDate();
-//        model.setDate(getTimeDate.getDate());
-//        model.setTime(getTimeDate.getTime());
-//
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        model.setUid(firebaseAuth.getUid());
-//        model.setCount(0);
-//
-//        rcvAdap.add(model);
+
 
         databaseReference.child("keys").addChildEventListener(new ChildEventListener() {
             @Override
@@ -104,6 +97,7 @@ public class MainFragment2 extends android.support.v4.app.Fragment {
             }
         });
 
+
         RecycleClick_Main2.addRecycler(rcv).setOnItemClickListener(new RecycleClick_Main2.OnItemClickListener() { //RecyclerViewd에 onClickListener 추가
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -123,7 +117,9 @@ public class MainFragment2 extends android.support.v4.app.Fragment {
         });
 
         return v;
+
     }
+
 
 
 }

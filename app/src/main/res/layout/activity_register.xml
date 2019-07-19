@@ -1,100 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/login_background"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:layout_centerInParent="true"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="회원이 아니라면?"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="36dp"
+            android:fontFamily="@font/nanumsquareeb"
+            android:text="회원가입 하세요."
+            android:textColor="@color/colorPrimary"
+            android:textSize="36sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:layout_margin="16dp"
-            android:id="@+id/card_regi">
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="이메일"
+                android:textSize="16sp" />
 
             <LinearLayout
-                android:layout_margin="12dp"
+                android:id="@+id/id_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/login_textbox"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="18dp">
 
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="닉네임 (최대 8자)"
-                    android:id="@+id/reg_nickname"
-                    android:maxLength="8"
-                    />
-
-                <EditText
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="이메일"
-                    android:inputType="textEmailAddress"
                     android:id="@+id/reg_id"
-                    />
-                <EditText
-                    android:layout_marginTop="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="패스워드 (a-Z, 0-9, 8자 이상)"
-                    android:inputType="textPassword"
-                    android:id="@+id/reg_password"
-                    />
-                <EditText
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="패스워드 확인"
-                    android:inputType="textPassword"
-                    android:id="@+id/reg_passwordcheck"
-                    />
-
+                    android:layout_marginStart="6dp"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="회원가입"
-                android:textAllCaps="false"
-                android:id="@+id/btn_register"
-                android:background="@color/colorPrimaryDark"
-                android:textColor="#FFFFFF" />
-
-            <ProgressBar
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:indeterminateTint="@android:color/white"
-                android:visibility="invisible"
-                android:id="@+id/progress_regi" />
+                android:layout_marginStart="52dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="이름"
+                android:textSize="16sp" />
 
+            <LinearLayout
+                android:id="@+id/name_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/login_textbox"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="18dp">
+
+                <EditText
+                    android:id="@+id/reg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="비밀번호"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/pw_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/login_textbox"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="18dp">
+
+                <EditText
+                    android:id="@+id/reg_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:inputType="textPassword"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="비밀번호 확인"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/pwcheck_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/login_textbox"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="18dp">
+
+                <EditText
+                    android:id="@+id/reg_passwordcheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:inputType="textPassword"
+                    android:background="@android:color/white"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:text="회원가입"
+        android:id="@+id/btn_register"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="@font/nanumsquarer"
+        android:textSize="18sp"
+        android:background="@drawable/login_gradient"
+        android:textColor="#FFFFFF" />
 
 
 
 
 
 
-
-</ScrollView>
+</RelativeLayout>

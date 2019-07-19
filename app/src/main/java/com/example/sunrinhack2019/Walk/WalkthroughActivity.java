@@ -43,8 +43,6 @@ public class WalkthroughActivity extends AppIntro {
         addSlide(walkFragment1);
         WalkFragment2 walkFragment2 = new WalkFragment2();
         addSlide(walkFragment2);
-        WalkFragment3 walkFragment3 = new WalkFragment3();
-        addSlide(walkFragment3);
 
         // OPTIONAL METHODS
         // Override bar/separator color.

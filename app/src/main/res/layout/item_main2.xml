@@ -39,6 +39,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/item_main2_cameraBtn"
+                android:visibility="gone"
                 android:src="@drawable/camera_icon"/>
         </RelativeLayout>
 
@@ -73,6 +74,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="4dp"
+                        android:visibility="gone"
                         android:src="@drawable/icon_edit" />
                 </LinearLayout>
 
@@ -84,6 +86,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="end"
                     android:layout_marginTop="2dp"
+                    android:visibility="gone"
                     android:src="@drawable/remove_icon" />
             </RelativeLayout>
 
@@ -144,6 +147,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:id="@+id/item_main2_keybox"
+        android:visibility="gone"
         android:gravity="center">
 
         <View
@@ -206,6 +211,7 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_gravity="end"
+        android:tag="n"
         android:src="@drawable/item_more" />
 
 </LinearLayout>

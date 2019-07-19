@@ -37,7 +37,7 @@
         <ImageView
             android:layout_width="72dp"
             android:layout_height="72dp"
-            android:src="@drawable/user_profile"/>
+            android:src="@drawable/user_profile" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,56 +45,198 @@
             android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/main2_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareeb"
                 android:text="김서연"
-                android:fontFamily="@font/nanumsquareeb"
                 android:textColor="@color/colorPrimary"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 님의 "
                 android:fontFamily="@font/nanumsquarer"
+                android:text=" 님의 "
                 android:textColor="@color/colorPrimary"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KEY"
                 android:fontFamily="@font/nanumsquareeb"
+                android:text="KEY"
                 android:textColor="@color/colorPrimary"
-                android:textSize="28sp"/>
+                android:textSize="28sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_marginTop="12dp"
-            android:padding="8dp"
-            android:background="@drawable/login_textbox">
+            android:background="@drawable/login_textbox"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:src="@drawable/locate_icon"/>
+                android:src="@drawable/locate_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="선린인터넷고등학교"
                 android:layout_marginStart="4dp"
-                android:fontFamily="@font/nanumsquarer"/>
+                android:fontFamily="@font/nanumsquarer"
+                android:text="선린인터넷고등학교" />
 
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/login_textbox"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginBottom="24dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/main1_image"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
+                    android:src="@drawable/default_image" />
+
+                <ImageView
+                    android:id="@+id/cameraBtn"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/camera_icon" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="자물쇠 이름"
+                    android:layout_marginStart="52dp"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/name_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/login_textbox_color"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp">
+
+                    <EditText
+                        android:id="@+id/main1_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@color/colorPrimaryLight"
+                        android:fontFamily="@font/nanumsquarer"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="비밀번호"
+                    android:layout_marginStart="52dp"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/pw_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/login_textbox_color"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp">
+
+                    <EditText
+                        android:id="@+id/main1_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@color/colorPrimaryLight"
+                        android:fontFamily="@font/nanumsquarer"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
 
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/uploadBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_gradient"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginTop="16dp"
+                android:text="추가하기"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/nanumsquarer"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
 
 
         <!--<Button

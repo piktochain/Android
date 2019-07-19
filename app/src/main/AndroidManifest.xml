@@ -50,7 +50,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Auth.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Auth.RegisterActivity"
             android:screenOrientation="portrait"

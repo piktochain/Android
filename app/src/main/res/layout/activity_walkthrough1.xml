@@ -3,30 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/walk1"
-    android:background="#f9cf69"
+    android:background="@drawable/walk_background"
     android:orientation="vertical"
     android:gravity="center">
 
-    <ImageView
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-         />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/walk_icon_1"/>
+
+    </RelativeLayout>
     <TextView
+        android:layout_marginTop="36dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="우리들의 팀 빌딩 플랫폼"
+        android:text="지문인식 기능을 활용한"
         android:textColor="@android:color/white"
-        android:fontFamily="@font/nanumsquareeb"
+        android:fontFamily="@font/nanumsquarer"
         android:textSize="28sp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Builders는 마음이 통하는 누구나 \n팀으로 이어주는 팀 빌딩 플랫폼입니다."
+        android:text="철저한 보안."
         android:textColor="@android:color/white"
         android:gravity="center"
-        android:fontFamily="@font/nanumsquarer"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp" />
+        android:fontFamily="@font/nanumsquareeb"
+        android:textSize="28sp" />
+
+    <ImageView
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/walk"/>
 
 </LinearLayout>
