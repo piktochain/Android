@@ -169,7 +169,7 @@ public class MainFragment1 extends android.support.v4.app.Fragment {
         }
         return true;
     }
-
+    
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MULTIPLE_PERMISSIONS: {
