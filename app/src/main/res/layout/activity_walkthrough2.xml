@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/walk2"
+    android:background="#fea771"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다양한 분야에서 \n함께할 팀원을 모집하세요"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/nanumsquareeb"
+        android:gravity="center"
+        android:textSize="28sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공모전, 대회, 봉사, 공연 등\n분야에 제한받지 않는 \n팀 빌딩을 경험해보세요"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:fontFamily="@font/nanumsquarer"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/walk1"
+    android:background="#f9cf69"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="우리들의 팀 빌딩 플랫폼"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/nanumsquareeb"
+        android:textSize="28sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Builders는 마음이 통하는 누구나 \n팀으로 이어주는 팀 빌딩 플랫폼입니다."
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:fontFamily="@font/nanumsquarer"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp" />
+
+</LinearLayout>
